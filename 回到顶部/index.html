@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>返回顶部</title>
+<style>
+html,body{margin:0;
+          padding:0;}
+#block{height:3000px;
+       border-top:solid #F00 1px;
+	   border-bottom:#F00 solid 1px;}
+#top{width:100px;
+     height:50px;
+	 position:absolute;
+	 left:100px;
+	 top:50px;
+	 background-color:#F00;
+	 text-align:center;
+	 color:#FFF;
+	 }	   
+
+</style>
+</head>
+
+<body>
+
+<div id="top">返回顶部</div>
+<div id="block"></div>
+<div id="buttom"></div>
+
+<script>
+//
+var atop=document.getElementById("top");
+var buttom=document.getElementById("buttom");
+arrtop();
+window.onscroll=arrtop;
+
+function arrtop(){
+  var seeWidth=document.documentElement.clientWidth||document.body.clientWidth;
+  var seeHeight=document.documentElement.clientHeight||document.body.clientHeight;
+  var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+  atop.style.left=seeWidth-"110"+"px";
+  atop.style.top=seeHeight+scrollTop-"60"+"px"; 
+  atop.onclick=function(){
+    document.documentElement.scrollTop = document.body.scrollTop =0;    
+  }
+}
+</script>
+</body>
+</html>

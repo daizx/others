@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="jquery-3.2.1.min.js"></script>
+<style>
+#banner{width:500px;
+        height:300px;
+		overflow:hidden;
+		position:relative;}
+#banner img{width:500px;
+            height:300px;
+			position:absolute;
+			top:0%;
+			left:100%;}
+#banner .first{left:0%;}		
+#choose {width:150px;
+        height:10px;
+		position:absolute;
+		left:200px;
+		top:280px;}
+#choose span{margin-right: 15px;
+             float: left;
+             display:block;
+             background:white;
+             width:10px;
+             height: 10px;
+             border-radius: 10px;
+			 z-index:100px;	
+	         }
+#choose .red{background:#F00;}		
+</style>
+<script src="jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+
+<div id="banner">
+<img class="first" src="image/1.jpg"/>
+<img src="image/2.jpg"/>
+<img src="image/3.jpg"/>
+<img src="image/4.jpg"/>
+<img src="image/6.jpg"/>
+
+<div id="choose"> 
+<span class="red"></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+</div>
+
+<script>
+var $index=0; 
+var $exdex=0;
+var ima=$("#banner img"); 
+$("#choose span").bind("click mouseover",lunbo);
+
+function lunbo(){
+  $index=$(this).index();
+  $("#choose span").eq($index).addClass("red").siblings().removeClass("red");
+    if($index>$exdex){next();}
+    else if($index<$exdex){pre();};  	
+    $exdex=$index;
+}
+
+$("#choose span").click(function(){
+  $index++; 
+  if($index>=5){$index=0};
+  $("#choose span").eq($index).addClass("red").siblings().removeClass("red");
+  next()    	
+  $exdex=$index;
+})
+var atime=setInterval(function(){
+  $("#choose span").eq($index).trigger("click")
+},1000);
+
+function next(){
+  $("img").eq($index).stop().css("left","100%").animate({"left":"0"});
+  $("img").eq($exdex).stop().css("left","0").animate({"left":"-100%"});	
+}
+function pre(){
+  $("img").eq($index).stop().css("left","-100%").animate({"left":"0%"});
+  $("img").eq($exdex).stop().css("left","0").animate({"left":"100%"});	
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>实现懒加载</title>
+<style>
+html,body{text-align:center};
+</style>
+
+</head>
+<body>
+
+<img src="" data-src="image/1.jpg" width="518.4" height="345.6" />
+<img src="" data-src="image/2.jpg" width="518.4" height="345.6" />
+<img src="" data-src="image/3.jpg" width="518.4" height="345.6" />
+<img src="" data-src="image/4.jpg" width="518.4" height="345.6" />
+<img src="" data-src="image/5.jpg" width="518.4" height="345.6" />
+<img src="" data-src="image/6.jpg" width="518.4" height="345.6" />
+<img src="" data-src="image/7.jpg" width="518.4" height="345.6" />
+<img src="" data-src="image/8.jpg" width="518.4" height="345.6" />
+<img src="" data-src="image/9.jpg" width="518.4" height="345.6" />
+<img src="" data-src="image/10.jpg" width="518.4" height="345.6" />
+
+
+<script>
+var n=0,
+    num=document.getElementsByTagName("img").length,
+    img=document.getElementsByTagName("img");
+lazyLoad();
+window.onscroll=lazyLoad;
+function lazyLoad(){
+  var seeHeight=document.documentElement.clientHeight;
+  var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+  for(var i=n;i<num;i++){
+	if(img[i].offsetTop<seeHeight+scrollTop){
+	  if(img[i].getAttribute("src")==""){
+	     img[i].src=img[i].getAttribute("data-src");
+		 n=i+1;
+	  }
+	} 
+  }
+}
+</script>
+</body>
+</html>

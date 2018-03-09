@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>返回顶部</title>
+<style>
+html,body{margin:0;
+          padding:0;}
+#block{height:3000px;
+       border-top:solid #F00 1px;
+	   border-bottom:#F00 solid 1px;}
+#top{width:100px;
+     height:50px;
+	 position:absolute;
+	 left:100px;
+	 top:50px;
+	 background-color:#F00;
+	 text-align:center;
+	 color:#FFF;
+	 }	   
+
+</style>
+<script src="jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+
+<div id="top">返回顶部</div>
+<div id="block"></div>
+<div id="buttom"></div>
+
+<script>
+//
+var atop=$("#top");
+arrtop();
+$(window).scroll(arrtop);
+function arrtop(){
+  var oleft=parseInt($(window).width())-"110"+"px"; console.log(oleft);
+  var otop=parseInt($(window).height())+parseInt($(window).scrollTop())-"60"+"px"; console.log(otop)
+  atop.css({left:oleft,top:otop});
+  atop.click(function(){$(window).scrollTop(0)});	
+}
+</script>
+</body>
+</html>

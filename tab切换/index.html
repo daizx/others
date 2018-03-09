@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+html,body{padding:0;
+          margin:0;}
+.oclick{height:50px;
+       width:100px;
+	   border:1px solid #F00;
+	   display:inline-block}
+.show{width:304px;
+      height:300px;
+	  border:1px solid #999;
+	  display:none;}
+	  
+</style>
+</head>
+
+<body>
+
+<div class="oclick"></div><div class="oclick"></div><div class="oclick"></div>
+<div class="show">zzz</div>
+<div class="show">zzzz</div>
+<div class="show">zzzzz</div>
+
+<script>
+var oclick=document.getElementsByClassName("oclick");
+var show=document.getElementsByClassName("show");
+
+
+function showIn(){
+  
+  for(var i=0;i<oclick.length;i++){
+    oclick[i].index=i
+	oclick[i].onclick=function(){
+      for(var i=0;i<oclick.length;i++){
+	    oclick[i].style.backgroundColor="white";
+	    show[i].style.display="none";
+	  }
+	  this.style.backgroundColor="red";
+	  show[this.index].style.display="block";
+	  
+	}
+  }
+ 	
+}
+showIn();
+</script>
+
+</body>
+</html>
